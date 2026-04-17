@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Signup - Hiralal Kumar Public Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="login-page-body">
+    <div class="auth-shell">
+        <section class="auth-hero">
+            <a href="/" class="auth-back-link">
+                <i class="fa-solid fa-arrow-left"></i> Back to store
+            </a>
+            <div class="auth-hero-copy">
+                <span class="auth-kicker">Fresh picks, faster checkout</span>
+                <h1><i class="fa-solid fa-leaf"></i> Welcome to Public Store</h1>
+                <p>Sign in to track your orders, save time at checkout, and keep your grocery runs simple.</p>
+            </div>
+            <div class="auth-floating-pill auth-pill-one">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span>Curated by Hiralal Kumar</span>
+            </div>
+            <div class="auth-floating-pill auth-pill-two">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Fast signup and checkout</span>
+            </div>
+            <div class="auth-highlights">
+                <div class="auth-highlight-card">
+                    <strong>Easy order history</strong>
+                    <span>Revisit your recent purchases anytime.</span>
+                </div>
+                <div class="auth-highlight-card">
+                    <strong>Quick reorders</strong>
+                    <span>Jump back into your weekly essentials faster.</span>
+                </div>
+                <div class="auth-highlight-card">
+                    <strong>Personal welcome</strong>
+                    <span>Keep your account ready for every visit.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-container">
+            <div class="auth-panel">
+                <div class="auth-panel-header">
+                    <p class="auth-eyebrow">Customer access</p>
+                    <h2>Hiralal Kumar Public Store</h2>
+                    <p class="auth-subtitle">Log in or create a profile in a few seconds with a cleaner, faster shopping flow.</p>
+                </div>
+
+                <div class="auth-switcher" aria-label="Authentication switcher">
+                    <button type="button" id="login-tab" class="auth-switch active">Log In</button>
+                    <button type="button" id="signup-tab" class="auth-switch">Sign Up</button>
+                </div>
+
+                <form id="login-form" class="auth-form active">
+                    <div class="auth-form-heading">
+                        <h3>Welcome back</h3>
+                        <p>Use your username and password to continue shopping.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="admin-button auth-submit-btn">Log In</button>
+                    <p id="login-message" class="message"></p>
+                    <p class="form-toggle-link">New here? <a href="#" id="show-signup">Create an account</a></p>
+                </form>
+
+                <form id="signup-form" class="auth-form">
+                    <div class="auth-form-heading">
+                        <h3>Create your account</h3>
+                        <p>Set up your profile to place orders and view your history.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" placeholder="Choose a username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="admin-button-primary auth-submit-btn">Create Account</button>
+                    <p id="signup-message" class="message"></p>
+                    <p class="form-toggle-link">Already registered? <a href="#" id="show-login">Log in instead</a></p>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>

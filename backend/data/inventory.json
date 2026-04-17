@@ -1,0 +1,1027 @@
+[
+    {
+        "id": 1,
+        "name": "Apple (1 kg)",
+        "price": 150.0,
+        "quantity": 87,
+        "category": "Fruits",
+        "image_url": "/static/images/apple.png"
+    },
+    {
+        "id": 2,
+        "name": "Atta (1 kg)",
+        "price": 52.0,
+        "quantity": 139,
+        "category": "Pantry",
+        "image_url": "/static/images/atta.webp"
+    },
+    {
+        "id": 3,
+        "name": "Banana (1 Dozen)",
+        "price": 70.0,
+        "quantity": 186,
+        "category": "Fruits",
+        "image_url": "/static/images/banana.jpeg"
+    },
+    {
+        "id": 4,
+        "name": "Bread Loaf",
+        "price": 40.0,
+        "quantity": 74,
+        "category": "Bakery",
+        "image_url": "/static/images/bread.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Butter (100g)",
+        "price": 55.0,
+        "quantity": 95,
+        "category": "Dairy",
+        "image_url": "/static/images/butter.jpeg"
+    },
+    {
+        "id": 6,
+        "name": "Cheese Slices",
+        "price": 120.0,
+        "quantity": 59,
+        "category": "Dairy",
+        "image_url": "/static/images/cheese.webp"
+    },
+    {
+        "id": 7,
+        "name": "Chicken (1 kg)",
+        "price": 350.0,
+        "quantity": 39,
+        "category": "Meat",
+        "image_url": "/static/images/chicken.jpeg"
+    },
+    {
+        "id": 8,
+        "name": "Floor Cleaner (1L)",
+        "price": 99.0,
+        "quantity": 69,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 9,
+        "name": "Detergent (1 kg)",
+        "price": 180.0,
+        "quantity": 63,
+        "category": "Household",
+        "image_url": "/static/images/detergent.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Fish (1 kg)",
+        "price": 450.0,
+        "quantity": 21,
+        "category": "Meat",
+        "image_url": "/static/images/fish.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Frozen Fries (500g)",
+        "price": 110.0,
+        "quantity": 50,
+        "category": "Frozen",
+        "image_url": "/static/images/fries.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Frozen Meal",
+        "price": 250.0,
+        "quantity": 40,
+        "category": "Frozen",
+        "image_url": "/static/images/frozenmeals.jpeg"
+    },
+    {
+        "id": 13,
+        "name": "Ghee (500g)",
+        "price": 280.0,
+        "quantity": 60,
+        "category": "Dairy",
+        "image_url": "/static/images/ghee.webp"
+    },
+    {
+        "id": 14,
+        "name": "Grapes (500g)",
+        "price": 80.0,
+        "quantity": 98,
+        "category": "Fruits",
+        "image_url": "/static/images/grapes.jpg"
+    },
+    {
+        "id": 15,
+        "name": "Ice Cream (1L)",
+        "price": 200.0,
+        "quantity": 50,
+        "category": "Frozen",
+        "image_url": "/static/images/icecream.webp"
+    },
+    {
+        "id": 16,
+        "name": "Lentils (Dal) (1 kg)",
+        "price": 140.0,
+        "quantity": 120,
+        "category": "Pantry",
+        "image_url": "/static/images/lentisDal.jpeg"
+    },
+    {
+        "id": 17,
+        "name": "Mango (1 kg)",
+        "price": 120.0,
+        "quantity": 89,
+        "category": "Fruits",
+        "image_url": "/static/images/mangoes.jpeg"
+    },
+    {
+        "id": 18,
+        "name": "Milk (1L)",
+        "price": 60.0,
+        "quantity": 98,
+        "category": "Dairy",
+        "image_url": "/static/images/milk.webp"
+    },
+    {
+        "id": 20,
+        "name": "Olive Oil (1L)",
+        "price": 800.0,
+        "quantity": 30,
+        "category": "Pantry",
+        "image_url": "/static/images/oliveoil.webp"
+    },
+    {
+        "id": 21,
+        "name": "Orange (1 kg)",
+        "price": 90.0,
+        "quantity": 110,
+        "category": "Fruits",
+        "image_url": "/static/images/oranges.jpg"
+    },
+    {
+        "id": 22,
+        "name": "Paneer (200g)",
+        "price": 100.0,
+        "quantity": 70,
+        "category": "Dairy",
+        "image_url": "/static/images/paneer.jpg"
+    },
+    {
+        "id": 23,
+        "name": "Pasta (500g)",
+        "price": 75.0,
+        "quantity": 90,
+        "category": "Pantry",
+        "image_url": "/static/images/pasta.jpeg"
+    },
+    {
+        "id": 24,
+        "name": "Frozen Peas (500g)",
+        "price": 95.0,
+        "quantity": 80,
+        "category": "Frozen",
+        "image_url": "/static/images/peas.avif"
+    },
+    {
+        "id": 25,
+        "name": "Pomegranate (1 kg)",
+        "price": 160.0,
+        "quantity": 75,
+        "category": "Fruits",
+        "image_url": "/static/images/pomegranates.jpg"
+    },
+    {
+        "id": 26,
+        "name": "Prawns (500g)",
+        "price": 400.0,
+        "quantity": 30,
+        "category": "Meat",
+        "image_url": "/static/images/prawns.webp"
+    },
+    {
+        "id": 27,
+        "name": "Rice (1 kg)",
+        "price": 60.0,
+        "quantity": 200,
+        "category": "Pantry",
+        "image_url": "/static/images/rice.jpg"
+    },
+    {
+        "id": 28,
+        "name": "Salt (1 kg)",
+        "price": 25.0,
+        "quantity": 300,
+        "category": "Pantry",
+        "image_url": "/static/images/salt.webp"
+    },
+    {
+        "id": 29,
+        "name": "Chicken Sausages",
+        "price": 220.0,
+        "quantity": 45,
+        "category": "Meat",
+        "image_url": "/static/images/sausage.webp"
+    },
+    {
+        "id": 30,
+        "name": "Shampoo (250ml)",
+        "price": 190.0,
+        "quantity": 55,
+        "category": "Household",
+        "image_url": "/static/images/shampoo.avif"
+    },
+    {
+        "id": 31,
+        "name": "Bath Soap",
+        "price": 45.0,
+        "quantity": 149,
+        "category": "Household",
+        "image_url": "/static/images/soap.jpg"
+    },
+    {
+        "id": 32,
+        "name": "Mixed Spices (100g)",
+        "price": 85.0,
+        "quantity": 100,
+        "category": "Pantry",
+        "image_url": "/static/images/spices.jpeg"
+    },
+    {
+        "id": 33,
+        "name": "Sugar (1 kg)",
+        "price": 45.0,
+        "quantity": 250,
+        "category": "Pantry",
+        "image_url": "/static/images/sugar.webp"
+    },
+    {
+        "id": 34,
+        "name": "Frozen Sweet Corn (500g)",
+        "price": 90.0,
+        "quantity": 79,
+        "category": "Frozen",
+        "image_url": "/static/images/sweetcorn.jpg"
+    },
+    {
+        "id": 35,
+        "name": "Tissue Box",
+        "price": 70.0,
+        "quantity": 88,
+        "category": "Household",
+        "image_url": "/static/images/tissues.webp"
+    },
+    {
+        "id": 36,
+        "name": "Yogurt (400g)",
+        "price": 65.0,
+        "quantity": 70,
+        "category": "Dairy",
+        "image_url": "/static/images/yogurts.webp"
+    },
+    {
+        "id": 37,
+        "name": "Croissant Pack",
+        "price": 95.0,
+        "quantity": 48,
+        "category": "Bakery",
+        "image_url": "/static/images/bread.jpg"
+    },
+    {
+        "id": 38,
+        "name": "Burger Buns",
+        "price": 50.0,
+        "quantity": 61,
+        "category": "Bakery",
+        "image_url": "/static/images/bread.jpg"
+    },
+    {
+        "id": 39,
+        "name": "Chocolate Muffins",
+        "price": 85.0,
+        "quantity": 34,
+        "category": "Bakery",
+        "image_url": "/static/images/bread.jpg"
+    },
+    {
+        "id": 40,
+        "name": "Garlic Bread",
+        "price": 75.0,
+        "quantity": 40,
+        "category": "Bakery",
+        "image_url": "/static/images/bread.jpg"
+    },
+    {
+        "id": 41,
+        "name": "Brown Bread",
+        "price": 45.0,
+        "quantity": 57,
+        "category": "Bakery",
+        "image_url": "/static/images/bread.jpg"
+    },
+    {
+        "id": 42,
+        "name": "Papaya (1 kg)",
+        "price": 78.0,
+        "quantity": 64,
+        "category": "Fruits",
+        "image_url": "/static/images/oranges.jpg"
+    },
+    {
+        "id": 43,
+        "name": "Guava (1 kg)",
+        "price": 82.0,
+        "quantity": 72,
+        "category": "Fruits",
+        "image_url": "/static/images/pomegranates.jpg"
+    },
+    {
+        "id": 44,
+        "name": "Curd (500g)",
+        "price": 48.0,
+        "quantity": 96,
+        "category": "Dairy",
+        "image_url": "/static/images/yogurts.webp"
+    },
+    {
+        "id": 45,
+        "name": "Fresh Cream (250ml)",
+        "price": 72.0,
+        "quantity": 54,
+        "category": "Dairy",
+        "image_url": "/static/images/milk.webp"
+    },
+    {
+        "id": 55,
+        "name": "Sweet Lassi (500ml)",
+        "price": 40.0,
+        "quantity": 85,
+        "category": "Dairy",
+        "image_url": "/static/images/yogurts.webp"
+    },
+    {
+        "id": 46,
+        "name": "Mutton (1 kg)",
+        "price": 720.0,
+        "quantity": 24,
+        "category": "Meat",
+        "image_url": "/static/images/mutton.jpeg"
+    },
+    {
+        "id": 47,
+        "name": "Boneless Chicken (500g)",
+        "price": 210.0,
+        "quantity": 38,
+        "category": "Meat",
+        "image_url": "/static/images/chicken.jpeg"
+    },
+    {
+        "id": 48,
+        "name": "Basmati Rice (5 kg)",
+        "price": 420.0,
+        "quantity": 46,
+        "category": "Pantry",
+        "image_url": "/static/images/rice.jpg"
+    },
+    {
+        "id": 49,
+        "name": "Turmeric Powder (200g)",
+        "price": 58.0,
+        "quantity": 88,
+        "category": "Pantry",
+        "image_url": "/static/images/spices.jpeg"
+    },
+    {
+        "id": 50,
+        "name": "Tomato Ketchup",
+        "price": 110.0,
+        "quantity": 67,
+        "category": "Pantry",
+        "image_url": "/static/images/spices.jpeg"
+    },
+    {
+        "id": 51,
+        "name": "Frozen Nuggets",
+        "price": 180.0,
+        "quantity": 44,
+        "category": "Frozen",
+        "image_url": "/static/images/frozenmeals.jpeg"
+    },
+    {
+        "id": 52,
+        "name": "Vanilla Ice Cream Cups",
+        "price": 120.0,
+        "quantity": 52,
+        "category": "Frozen",
+        "image_url": "/static/images/icecream.webp"
+    },
+    {
+        "id": 53,
+        "name": "Dishwash Liquid (500ml)",
+        "price": 115.0,
+        "quantity": 61,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 54,
+        "name": "Toilet Cleaner (1L)",
+        "price": 135.0,
+        "quantity": 43,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 56,
+        "name": "Kiwi (4 pcs)",
+        "price": 120.0,
+        "quantity": 48,
+        "category": "Fruits",
+        "image_url": "/static/images/grapes.jpg"
+    },
+    {
+        "id": 57,
+        "name": "Dragon Fruit (1 pc)",
+        "price": 145.0,
+        "quantity": 34,
+        "category": "Fruits",
+        "image_url": "/static/images/pomegranates.jpg"
+    },
+    {
+        "id": 58,
+        "name": "Pineapple (1 pc)",
+        "price": 90.0,
+        "quantity": 42,
+        "category": "Fruits",
+        "image_url": "/static/images/oranges.jpg"
+    },
+    {
+        "id": 59,
+        "name": "Mosambi (1 kg)",
+        "price": 85.0,
+        "quantity": 57,
+        "category": "Fruits",
+        "image_url": "/static/images/oranges.jpg"
+    },
+    {
+        "id": 60,
+        "name": "Watermelon (1 pc)",
+        "price": 110.0,
+        "quantity": 33,
+        "category": "Fruits",
+        "image_url": "/static/images/mangoes.jpeg"
+    },
+    {
+        "id": 61,
+        "name": "Rohu Fish (1 kg)",
+        "price": 320.0,
+        "quantity": 26,
+        "category": "Meat",
+        "image_url": "/static/images/fish.jpg"
+    },
+    {
+        "id": 62,
+        "name": "Salmon Fillet (500g)",
+        "price": 540.0,
+        "quantity": 18,
+        "category": "Meat",
+        "image_url": "/static/images/fish.jpg"
+    },
+    {
+        "id": 63,
+        "name": "Hilsa Fish (1 kg)",
+        "price": 680.0,
+        "quantity": 15,
+        "category": "Meat",
+        "image_url": "/static/images/fish.jpg"
+    },
+    {
+        "id": 64,
+        "name": "Chicken Curry Cut (1 kg)",
+        "price": 280.0,
+        "quantity": 41,
+        "category": "Meat",
+        "image_url": "/static/images/chicken.jpeg"
+    },
+    {
+        "id": 65,
+        "name": "Chicken Drumsticks (500g)",
+        "price": 190.0,
+        "quantity": 39,
+        "category": "Meat",
+        "image_url": "/static/images/chicken.jpeg"
+    },
+    {
+        "id": 66,
+        "name": "Chicken Wings (500g)",
+        "price": 175.0,
+        "quantity": 37,
+        "category": "Meat",
+        "image_url": "/static/images/chicken.jpeg"
+    },
+    {
+        "id": 67,
+        "name": "Mutton Curry Cut (1 kg)",
+        "price": 760.0,
+        "quantity": 20,
+        "category": "Meat",
+        "image_url": "/static/images/mutton.jpeg"
+    },
+    {
+        "id": 68,
+        "name": "Mutton Keema (500g)",
+        "price": 390.0,
+        "quantity": 22,
+        "category": "Meat",
+        "image_url": "/static/images/mutton.jpeg"
+    },
+    {
+        "id": 69,
+        "name": "Aashirvaad Atta (5 kg)",
+        "price": 285.0,
+        "quantity": 44,
+        "category": "Pantry",
+        "image_url": "/static/images/atta.webp"
+    },
+    {
+        "id": 70,
+        "name": "Fortune Chakki Fresh Atta (5 kg)",
+        "price": 295.0,
+        "quantity": 38,
+        "category": "Pantry",
+        "image_url": "/static/images/atta.webp"
+    },
+    {
+        "id": 71,
+        "name": "India Gate Basmati Rice (1 kg)",
+        "price": 130.0,
+        "quantity": 72,
+        "category": "Pantry",
+        "image_url": "/static/images/rice.jpg"
+    },
+    {
+        "id": 72,
+        "name": "Tata Salt (1 kg)",
+        "price": 30.0,
+        "quantity": 120,
+        "category": "Pantry",
+        "image_url": "/static/images/salt.webp"
+    },
+    {
+        "id": 73,
+        "name": "Dhara Mustard Oil (1L)",
+        "price": 165.0,
+        "quantity": 53,
+        "category": "Pantry",
+        "image_url": "/static/images/oliveoil.webp"
+    },
+    {
+        "id": 74,
+        "name": "Maggi Noodles Family Pack",
+        "price": 95.0,
+        "quantity": 83,
+        "category": "Pantry",
+        "image_url": "/static/images/pasta.jpeg"
+    },
+    {
+        "id": 75,
+        "name": "Kissan Mixed Fruit Jam",
+        "price": 140.0,
+        "quantity": 46,
+        "category": "Pantry",
+        "image_url": "/static/images/spices.jpeg"
+    },
+    {
+        "id": 76,
+        "name": "Surf Excel Easy Wash (1 kg)",
+        "price": 210.0,
+        "quantity": 49,
+        "category": "Household",
+        "image_url": "/static/images/detergent.jpg"
+    },
+    {
+        "id": 77,
+        "name": "Ariel Detergent Powder (1 kg)",
+        "price": 225.0,
+        "quantity": 45,
+        "category": "Household",
+        "image_url": "/static/images/detergent.jpg"
+    },
+    {
+        "id": 78,
+        "name": "Harpic Bathroom Cleaner",
+        "price": 120.0,
+        "quantity": 58,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 79,
+        "name": "Lizol Floor Cleaner (1L)",
+        "price": 155.0,
+        "quantity": 47,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 80,
+        "name": "Colin Glass Cleaner",
+        "price": 98.0,
+        "quantity": 63,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 81,
+        "name": "Paper Napkins Pack",
+        "price": 55.0,
+        "quantity": 86,
+        "category": "Household",
+        "image_url": "/static/images/tissues.webp"
+    },
+    {
+        "id": 82,
+        "name": "McCain Aloo Tikki",
+        "price": 165.0,
+        "quantity": 38,
+        "category": "Frozen",
+        "image_url": "/static/images/frozenmeals.jpeg"
+    },
+    {
+        "id": 83,
+        "name": "McCain Veggie Fries",
+        "price": 145.0,
+        "quantity": 36,
+        "category": "Frozen",
+        "image_url": "/static/images/fries.jpg"
+    },
+    {
+        "id": 84,
+        "name": "Amul Frozen Green Peas",
+        "price": 105.0,
+        "quantity": 61,
+        "category": "Frozen",
+        "image_url": "/static/images/peas.avif"
+    },
+    {
+        "id": 85,
+        "name": "Kwality Walls Chocobar",
+        "price": 35.0,
+        "quantity": 92,
+        "category": "Frozen",
+        "image_url": "/static/images/icecream.webp"
+    },
+    {
+        "id": 86,
+        "name": "Amul Butterscotch Tub",
+        "price": 210.0,
+        "quantity": 28,
+        "category": "Frozen",
+        "image_url": "/static/images/icecream.webp"
+    },
+    {
+        "id": 87,
+        "name": "Mother Dairy Full Cream Milk (1L)",
+        "price": 68.0,
+        "quantity": 74,
+        "category": "Dairy",
+        "image_url": "/static/images/milk.webp"
+    },
+    {
+        "id": 88,
+        "name": "Amul Taaza Milk (1L)",
+        "price": 64.0,
+        "quantity": 82,
+        "category": "Dairy",
+        "image_url": "/static/images/milk.webp"
+    },
+    {
+        "id": 89,
+        "name": "Britannia Cheese Cubes",
+        "price": 135.0,
+        "quantity": 51,
+        "category": "Dairy",
+        "image_url": "/static/images/cheese.webp"
+    },
+    {
+        "id": 90,
+        "name": "Amul Masti Buttermilk",
+        "price": 25.0,
+        "quantity": 96,
+        "category": "Dairy",
+        "image_url": "/static/images/yogurts.webp"
+    },
+    {
+        "id": 91,
+        "name": "Mother Dairy Salted Lassi",
+        "price": 30.0,
+        "quantity": 87,
+        "category": "Dairy",
+        "image_url": "/static/images/yogurts.webp"
+    },
+    {
+        "id": 92,
+        "name": "Nestle A+ Dahi",
+        "price": 52.0,
+        "quantity": 57,
+        "category": "Dairy",
+        "image_url": "/static/images/yogurts.webp"
+    },
+    {
+        "id": 93,
+        "name": "Blueberry (200g)",
+        "price": 165.0,
+        "quantity": 32,
+        "category": "Fruits",
+        "image_url": "/static/images/grapes.jpg"
+    },
+    {
+        "id": 94,
+        "name": "Raspberry (200g)",
+        "price": 185.0,
+        "quantity": 26,
+        "category": "Fruits",
+        "image_url": "/static/images/pomegranates.jpg"
+    },
+    {
+        "id": 95,
+        "name": "Blackberry (200g)",
+        "price": 190.0,
+        "quantity": 24,
+        "category": "Fruits",
+        "image_url": "/static/images/grapes.jpg"
+    },
+    {
+        "id": 96,
+        "name": "Pear (1 kg)",
+        "price": 118.0,
+        "quantity": 39,
+        "category": "Fruits",
+        "image_url": "/static/images/apple.png"
+    },
+    {
+        "id": 97,
+        "name": "Peach (500g)",
+        "price": 140.0,
+        "quantity": 28,
+        "category": "Fruits",
+        "image_url": "/static/images/oranges.jpg"
+    },
+    {
+        "id": 98,
+        "name": "Plum (500g)",
+        "price": 135.0,
+        "quantity": 30,
+        "category": "Fruits",
+        "image_url": "/static/images/pomegranates.jpg"
+    },
+    {
+        "id": 99,
+        "name": "Plate Set",
+        "price": 320.0,
+        "quantity": 24,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 100,
+        "name": "Bowl Set",
+        "price": 280.0,
+        "quantity": 26,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 101,
+        "name": "Spoon Set",
+        "price": 150.0,
+        "quantity": 34,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 102,
+        "name": "Fork Set",
+        "price": 160.0,
+        "quantity": 31,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 103,
+        "name": "Kitchen Knife",
+        "price": 210.0,
+        "quantity": 29,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 104,
+        "name": "Glass Set",
+        "price": 260.0,
+        "quantity": 22,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 105,
+        "name": "Tea Mug",
+        "price": 180.0,
+        "quantity": 28,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 106,
+        "name": "Frying Pan",
+        "price": 540.0,
+        "quantity": 18,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 107,
+        "name": "Pressure Cooker",
+        "price": 1890.0,
+        "quantity": 12,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 108,
+        "name": "Cooking Pot",
+        "price": 760.0,
+        "quantity": 16,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 109,
+        "name": "Cutting Board",
+        "price": 240.0,
+        "quantity": 33,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 110,
+        "name": "Gas Stove",
+        "price": 3290.0,
+        "quantity": 8,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 111,
+        "name": "Mixer Grinder",
+        "price": 2490.0,
+        "quantity": 10,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 112,
+        "name": "Microwave Oven",
+        "price": 6890.0,
+        "quantity": 6,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 113,
+        "name": "Refrigerator",
+        "price": 22490.0,
+        "quantity": 4,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 114,
+        "name": "Broom",
+        "price": 120.0,
+        "quantity": 45,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 115,
+        "name": "Mop",
+        "price": 260.0,
+        "quantity": 37,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 116,
+        "name": "Soap Pack",
+        "price": 110.0,
+        "quantity": 58,
+        "category": "Household",
+        "image_url": "/static/images/soap.jpg"
+    },
+    {
+        "id": 117,
+        "name": "Shampoo Bottle",
+        "price": 210.0,
+        "quantity": 42,
+        "category": "Household",
+        "image_url": "/static/images/shampoo.avif"
+    },
+    {
+        "id": 118,
+        "name": "Toothpaste",
+        "price": 95.0,
+        "quantity": 67,
+        "category": "Household",
+        "image_url": "/static/images/soap.jpg"
+    },
+    {
+        "id": 119,
+        "name": "Toothbrush Pack",
+        "price": 85.0,
+        "quantity": 61,
+        "category": "Household",
+        "image_url": "/static/images/soap.jpg"
+    },
+    {
+        "id": 120,
+        "name": "Bath Towel",
+        "price": 320.0,
+        "quantity": 25,
+        "category": "Household",
+        "image_url": "/static/images/tissues.webp"
+    },
+    {
+        "id": 121,
+        "name": "Bathroom Bucket",
+        "price": 180.0,
+        "quantity": 39,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 122,
+        "name": "Bathroom Mug",
+        "price": 70.0,
+        "quantity": 48,
+        "category": "Household",
+        "image_url": "/static/images/decor.jpeg"
+    },
+    {
+        "id": 123,
+        "name": "Dustpan",
+        "price": 95.0,
+        "quantity": 44,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 124,
+        "name": "Cleaning Cloth Pack",
+        "price": 90.0,
+        "quantity": 56,
+        "category": "Household",
+        "image_url": "/static/images/tissues.webp"
+    },
+    {
+        "id": 125,
+        "name": "Scrub Sponge",
+        "price": 45.0,
+        "quantity": 72,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 126,
+        "name": "Dishwashing Liquid",
+        "price": 115.0,
+        "quantity": 63,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 127,
+        "name": "Floor Cleaner",
+        "price": 150.0,
+        "quantity": 51,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 128,
+        "name": "Toilet Cleaner",
+        "price": 135.0,
+        "quantity": 49,
+        "category": "Household",
+        "image_url": "/static/images/cleaner.png"
+    },
+    {
+        "id": 129,
+        "name": "Garbage Bags Roll",
+        "price": 80.0,
+        "quantity": 70,
+        "category": "Household",
+        "image_url": "/static/images/tissues.webp"
+    }
+]
+

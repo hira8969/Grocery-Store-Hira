@@ -1,0 +1,23 @@
+{
+    "orderId": "20260417_132654",
+    "username": "hira",
+    "items": [
+        {
+            "name": "Bread Loaf",
+            "price": 40.0,
+            "quantity": 1
+        },
+        {
+            "name": "Banana (1 Dozen)",
+            "price": 70.0,
+            "quantity": 1
+        },
+        {
+            "name": "Atta (1 kg)",
+            "price": 52.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 162.0,
+    "date": "2026-04-17T13:26:54.257594"
+}

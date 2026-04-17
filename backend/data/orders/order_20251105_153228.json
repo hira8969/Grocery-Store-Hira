@@ -1,0 +1,18 @@
+{
+    "orderId": "20251105_153228",
+    "username": "Guest",
+    "items": [
+        {
+            "name": "Apple (1 kg)",
+            "price": 150.0,
+            "quantity": 1
+        },
+        {
+            "name": "Atta (1 kg)",
+            "price": 52.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 202.0,
+    "date": "2025-11-05T15:32:28.432759"
+}

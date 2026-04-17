@@ -1,0 +1,32 @@
+{
+    "orderId": "20251104_204003",
+    "items": [
+        {
+            "name": "Apple (1 kg)",
+            "price": 150.0,
+            "quantity": 1
+        },
+        {
+            "name": "Atta (1 kg)",
+            "price": 52.0,
+            "quantity": 1
+        },
+        {
+            "name": "Banana (1 Dozen)",
+            "price": 70.0,
+            "quantity": 1
+        },
+        {
+            "name": "Bread Loaf",
+            "price": 40.0,
+            "quantity": 1
+        },
+        {
+            "name": "Butter (100g)",
+            "price": 55.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 367.0,
+    "date": "2025-11-04T20:40:03.566133"
+}

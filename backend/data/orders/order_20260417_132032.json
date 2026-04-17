@@ -1,0 +1,13 @@
+{
+    "orderId": "20260417_132032",
+    "username": "Guest",
+    "items": [
+        {
+            "name": "Apple (1 kg)",
+            "price": 150.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 150.0,
+    "date": "2026-04-17T13:20:32.271862"
+}

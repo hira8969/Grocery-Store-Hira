@@ -1,0 +1,23 @@
+{
+    "orderId": "20251104_225639",
+    "username": "Guest",
+    "items": [
+        {
+            "name": "Tissue Box",
+            "price": 70.0,
+            "quantity": 1
+        },
+        {
+            "name": "Frozen Sweet Corn (500g)",
+            "price": 90.0,
+            "quantity": 1
+        },
+        {
+            "name": "Milk (1L)",
+            "price": 60.0,
+            "quantity": 2
+        }
+    ],
+    "totalAmount": 280.0,
+    "date": "2025-11-04T22:56:39.813532"
+}

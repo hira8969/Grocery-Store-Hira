@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="admin-page">
+
+    <header class="admin-header">
+        <h2><i class="fa-solid fa-user-shield"></i> Hiralal Kumar Store - Admin Panel</h2>
+        <a href="/" class="admin-nav-link">
+            <i class="fa-solid fa-store"></i> Back to Store
+        </a>
+    </header>
+
+    <div class="admin-container">
+        <div id="login-section" class="admin-box">
+            <h2>Admin Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="admin" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="admin-button">Login</button>
+            </form>
+            <p id="login-message" class="message"></p>
+        </div>
+
+        
+        <div id="admin-content" style="display: none;">
+            <div class="admin-content-header">
+                <h2>Inventory Management</h2>
+                <button id="logout-btn" class="admin-button-logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                </button>
+            </div>
+            
+            <div id="item-form-container" class="admin-box">
+                <form id="item-form">
+                    <h3><i class="fa-solid fa-plus-circle"></i> Add / Edit Item</h3>
+                    <input type="hidden" id="item-id">
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="item-name">Name</label>
+                            <input type="text" id="item-name" placeholder="e.g., Apple (1 kg)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-price">Price (₹)</label>
+                            <input type="number" id="item-price" placeholder="150.00" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-quantity">Quantity</label>
+                            <input type="number" id="item-quantity" placeholder="100" step="1" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-category">Category</label>
+                            <input type="text" id="item-category" placeholder="e.g., Fruits" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" id="form-submit-btn" class="admin-button-primary">Add Item</button>
+                        <button type="button" id="form-cancel-btn" class="admin-button-secondary" style="display: none;">Cancel Edit</button>
+                    </div>
+                </form>
+                <p id="form-message" class="message"></p>
+            </div>
+
+            <div id="inventory-table-container" class="admin-box">
+                <h3><i class="fa-solid fa-clipboard-list"></i> Current Inventory</h3>
+                <table id="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-list">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+                <div id="orders-section" class="admin-box">
+            <h3><i class="fa-solid fa-receipt"></i> Recent Orders</h3>
+            <table id="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                        <th>Items</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-list">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>

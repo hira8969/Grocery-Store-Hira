@@ -1,0 +1,23 @@
+{
+    "orderId": "20260417_125445",
+    "username": "Guest",
+    "items": [
+        {
+            "name": "Dishwashing Liquid",
+            "price": 115.0,
+            "quantity": 1
+        },
+        {
+            "name": "Floor Cleaner",
+            "price": 150.0,
+            "quantity": 1
+        },
+        {
+            "name": "Dhara Mustard Oil (1L)",
+            "price": 165.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 430.0,
+    "date": "2026-04-17T12:54:45.523944"
+}

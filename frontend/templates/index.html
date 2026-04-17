@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiralal Kumar Public Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="store-shell">
+        <header class="store-topbar">
+            <a href="/" class="brand-mark">
+                <span class="brand-icon"><i class="fa-solid fa-basket-shopping"></i></span>
+                <span class="brand-copy">
+                    <strong>Public Store</strong>
+                    <small>Fresh groceries in minutes</small>
+                </span>
+            </a>
+
+            <div class="search-stack">
+                <label class="search-bar" for="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-bar" placeholder="Search fruits, dairy, frozen snacks...">
+                    <button type="button" class="search-shortcut">/</button>
+                </label>
+                <div id="search-suggestions" class="search-suggestions" hidden></div>
+            </div>
+
+            <div class="topbar-actions">
+                <a href="/my-orders" class="topbar-link">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="/login" class="topbar-link" id="account-link">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Account</span>
+                </a>
+                <button type="button" class="cart-launcher" id="cart-launcher">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Cart</span>
+                    <strong id="cart-count">0</strong>
+                </button>
+            </div>
+        </header>
+
+        <main class="store-main">
+            <section class="hero-section">
+                <div class="hero-copy">
+                    <span class="hero-badge">Freshly stocked today</span>
+                    <h1>Startup-style grocery shopping with cleaner browsing and quicker checkout.</h1>
+                    <p>Discover fruits, pantry staples, dairy, frozen food, and home essentials in one polished storefront built for speed.</p>
+                    <div class="hero-actions">
+                        <a href="#products" class="hero-btn hero-btn-primary">Shop now</a>
+                        <a href="/my-orders" class="hero-btn hero-btn-secondary">View orders</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <strong id="hero-product-count">0+</strong>
+                            <span>products</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong id="hero-category-count">0</strong>
+                            <span>categories</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong>10 min</strong>
+                            <span>express feel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-card hero-card-primary">
+                        <p>Weekly best picks</p>
+                        <strong>Fruits + Dairy combo</strong>
+                        <span>From Rs. 299</span>
+                    </div>
+                    <div class="hero-card hero-card-secondary">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <div>
+                            <strong>Fresh arrivals</strong>
+                            <span>Updated inventory across all categories</span>
+                        </div>
+                    </div>
+                    <div class="hero-bubble hero-bubble-one"></div>
+                    <div class="hero-bubble hero-bubble-two"></div>
+                </div>
+            </section>
+
+            <section class="info-strip">
+                <article class="info-chip">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <div>
+                        <strong>Fast dispatch</strong>
+                        <span>Designed for quick add-to-cart flows</span>
+                    </div>
+                </article>
+                <article class="info-chip">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    <div>
+                        <strong>Quality checks</strong>
+                        <span>Visible stock counts and cleaner product cards</span>
+                    </div>
+                </article>
+                <article class="info-chip">
+                    <i class="fa-solid fa-tags"></i>
+                    <div>
+                        <strong>Category switching</strong>
+                        <span>Browse by chips, search, and quick highlights</span>
+                    </div>
+                </article>
+            </section>
+
+            <section class="category-overview-section">
+                <div class="section-title-row">
+                    <div>
+                        <p class="section-kicker">Browse by section</p>
+                        <h2>Popular aisles</h2>
+                    </div>
+                </div>
+                <div id="category-overview" class="category-overview-grid"></div>
+            </section>
+
+            <section class="products-section" id="products">
+                <div class="section-title-row listing-title-row">
+                    <div>
+                        <p class="section-kicker">Product listing</p>
+                        <h2>Shop everything</h2>
+                    </div>
+                    <div class="listing-tools">
+                        <div id="welcome-message" class="welcome-chip">Loading user...</div>
+                        <button type="button" class="ghost-btn" id="logout-link">Log out</button>
+                    </div>
+                </div>
+
+                <div class="listing-surface">
+                    <div class="listing-toolbar">
+                        <div id="category-chips" class="category-chips-container"></div>
+                        <div class="toolbar-actions">
+                            <label class="toolbar-select">
+                                <span>Sort</span>
+                                <select id="sort-select">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="name">Name: A to Z</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="item-list" class="product-grid-new"></div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="cart-sidebar" id="cart-sidebar">
+            <div class="cart-sidebar-header">
+                <div>
+                    <p class="section-kicker">Cart</p>
+                    <h2>Your bag</h2>
+                </div>
+                <button type="button" class="icon-btn cart-close-btn" id="cart-close-btn" aria-label="Close cart">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="cart-summary-banner">
+                <strong>Ready for checkout</strong>
+                <span>Review items, update quantity, and place your order.</span>
+            </div>
+
+            <div id="cart-items" class="cart-items"></div>
+
+            <div class="cart-footer">
+                <div class="cart-summary-line">
+                    <span>Items</span>
+                    <strong id="cart-item-count">0</strong>
+                </div>
+                <h3 id="cart-total">Total: <span>Rs. 0.00</span></h3>
+                <button id="checkout-btn" class="checkout-btn-full">Checkout now</button>
+            </div>
+        </aside>
+    </div>
+
+    <div class="store-overlay" id="store-overlay" hidden></div>
+
+    <div class="product-modal" id="product-modal" hidden>
+        <div class="product-modal-dialog">
+            <button type="button" class="icon-btn product-modal-close" id="product-modal-close" aria-label="Close product details">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="product-modal-content">
+                <span id="product-modal-category" class="product-pill"></span>
+                <h2 id="product-modal-name"></h2>
+                <p id="product-modal-description" class="product-modal-description"></p>
+                <div class="product-modal-meta">
+                    <div class="product-meta-box">
+                        <span>Price</span>
+                        <strong id="product-modal-price"></strong>
+                    </div>
+                    <div class="product-meta-box">
+                        <span>Stock</span>
+                        <strong id="product-modal-stock"></strong>
+                    </div>
+                    <div class="product-meta-box">
+                        <span>Rating</span>
+                        <strong id="product-modal-rating"></strong>
+                    </div>
+                </div>
+                <button type="button" class="hero-btn hero-btn-primary" id="product-modal-add-btn">Add to cart</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="store-footer">
+        <div class="footer-brand">
+            <strong>Hiralal Kumar Public Store</strong>
+            <p>A cleaner grocery storefront experience built on your existing app.</p>
+        </div>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/my-orders">Orders</a>
+            <a href="/login">Login</a>
+            <a href="/admin">Admin</a>
+        </div>
+        <p class="footer-note">Fresh groceries, smoother browsing, better product discovery.</p>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

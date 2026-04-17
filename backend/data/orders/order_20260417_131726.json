@@ -1,0 +1,23 @@
+{
+    "orderId": "20260417_131726",
+    "username": "Guest",
+    "items": [
+        {
+            "name": "Brown Bread",
+            "price": 45.0,
+            "quantity": 1
+        },
+        {
+            "name": "Burger Buns",
+            "price": 50.0,
+            "quantity": 1
+        },
+        {
+            "name": "Chocolate Muffins",
+            "price": 85.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 180.0,
+    "date": "2026-04-17T13:17:26.368745"
+}

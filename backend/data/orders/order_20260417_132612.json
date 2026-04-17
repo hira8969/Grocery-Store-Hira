@@ -1,0 +1,13 @@
+{
+    "orderId": "20260417_132612",
+    "username": "hira",
+    "items": [
+        {
+            "name": "Banana (1 Dozen)",
+            "price": 70.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 70.0,
+    "date": "2026-04-17T13:26:12.213938"
+}

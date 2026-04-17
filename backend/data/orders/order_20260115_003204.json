@@ -1,0 +1,18 @@
+{
+    "orderId": "20260115_003204",
+    "username": "hira",
+    "items": [
+        {
+            "name": "Apple (1 kg)",
+            "price": 150.0,
+            "quantity": 1
+        },
+        {
+            "name": "Banana (1 Dozen)",
+            "price": 70.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 220.0,
+    "date": "2026-01-15T00:32:04.822583"
+}

@@ -1,0 +1,13 @@
+{
+    "orderId": "20251105_153021",
+    "username": "ankesh@123",
+    "items": [
+        {
+            "name": "Fish (1 kg)",
+            "price": 450.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 450.0,
+    "date": "2025-11-05T15:30:21.402121"
+}

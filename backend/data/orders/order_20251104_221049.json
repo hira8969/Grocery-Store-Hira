@@ -1,0 +1,22 @@
+{
+    "orderId": "20251104_221049",
+    "items": [
+        {
+            "name": "Apple (1 kg)",
+            "price": 150.0,
+            "quantity": 1
+        },
+        {
+            "name": "Atta (1 kg)",
+            "price": 52.0,
+            "quantity": 1
+        },
+        {
+            "name": "Banana (1 Dozen)",
+            "price": 70.0,
+            "quantity": 1
+        }
+    ],
+    "totalAmount": 272.0,
+    "date": "2025-11-04T22:10:49.084068"
+}
