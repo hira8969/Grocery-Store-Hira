@@ -2,7 +2,7 @@ from flask import Flask
 from models import init_data
 from controllers import auth_bp, inventory_bp, order_bp, view_bp
 
-app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static')
+app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static', static_url_path='/static')
 
 # Register blueprints
 app.register_blueprint(auth_bp)
