@@ -1,45 +1,33 @@
-const mysql = require("mysql2/promise");
+const { MongoClient } = require("mongodb");
 const { db } = require("./env");
 
-let pool;
+let client;
+let database;
 
-function createPool(database) {
-  return mysql.createPool({
-    host: db.host,
-    port: db.port,
-    user: db.user,
-    password: db.password,
-    database,
-    waitForConnections: true,
-    connectionLimit: 10,
-    decimalNumbers: true
-  });
-}
-
-async function createAdminConnection() {
-  return mysql.createConnection({
-    host: db.host,
-    port: db.port,
-    user: db.user,
-    password: db.password
-  });
-}
-
-function setPool(nextPool) {
-  pool = nextPool;
-}
-
-function getPool() {
-  if (!pool) {
-    throw new Error("Database pool has not been initialized.");
+async function connectToDatabase() {
+  if (database) {
+    return database;
   }
-  return pool;
+
+  client = new MongoClient(db.uri);
+  await client.connect();
+  database = client.db(db.name);
+  return database;
+}
+
+function getDb() {
+  if (!database) {
+    throw new Error("Database connection has not been initialized.");
+  }
+  return database;
+}
+
+function getCollection(name) {
+  return getDb().collection(name);
 }
 
 module.exports = {
-  createAdminConnection,
-  createPool,
-  getPool,
-  setPool
+  connectToDatabase,
+  getCollection,
+  getDb
 };
-

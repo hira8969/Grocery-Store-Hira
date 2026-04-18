@@ -1,70 +1,41 @@
-const { getPool } = require("../config/database");
+const { getCollection } = require("../config/database");
 const { generateOrderId } = require("../utils/order");
 
-async function hydrateOrder(connection, orderRow) {
-  const [items] = await connection.query(
-    `
-      SELECT item_name, price, quantity
-      FROM order_items
-      WHERE order_id = ?
-      ORDER BY id ASC
-    `,
-    [orderRow.id]
-  );
-
+function hydrateOrder(orderRow) {
   return {
-    orderId: orderRow.order_id,
+    orderId: orderRow.orderId,
     username: orderRow.username,
-    items: items.map((item) => ({
-      name: item.item_name,
-      price: Number(item.price),
-      quantity: item.quantity
+    items: (orderRow.items || []).map((item) => ({
+      name: item.name || item.item_name,
+      price: Number(item.price || 0),
+      quantity: Number(item.quantity || 0)
     })),
-    totalAmount: Number(orderRow.total_amount),
-    date: new Date(orderRow.created_at).toISOString()
+    totalAmount: Number(orderRow.totalAmount || 0),
+    date: new Date(orderRow.createdAt).toISOString()
   };
 }
 
 async function listOrders() {
-  const connection = await getPool().getConnection();
-  try {
-    const [rows] = await connection.query(
-      `
-        SELECT id, order_id, username, total_amount, created_at
-        FROM orders
-        ORDER BY created_at DESC
-      `
-    );
-    return Promise.all(rows.map((row) => hydrateOrder(connection, row)));
-  } finally {
-    connection.release();
-  }
+  const rows = await getCollection("orders")
+    .find({}, { projection: { _id: 0 } })
+    .sort({ createdAt: -1 })
+    .toArray();
+  return rows.map(hydrateOrder);
 }
 
 async function listOrdersByUsername(username) {
-  const connection = await getPool().getConnection();
-  try {
-    const [rows] = await connection.query(
-      `
-        SELECT id, order_id, username, total_amount, created_at
-        FROM orders
-        WHERE username = ?
-        ORDER BY created_at DESC
-      `,
-      [username]
-    );
-    return Promise.all(rows.map((row) => hydrateOrder(connection, row)));
-  } finally {
-    connection.release();
-  }
+  const rows = await getCollection("orders")
+    .find({ username }, { projection: { _id: 0 } })
+    .sort({ createdAt: -1 })
+    .toArray();
+  return rows.map(hydrateOrder);
 }
 
 async function createOrder({ cart, username }) {
-  const connection = await getPool().getConnection();
-
+  const inventory = getCollection("inventory");
+  const orders = getCollection("orders");
+  const updatedItems = [];
   try {
-    await connection.beginTransaction();
-
     let totalAmount = 0;
     const orderItems = [];
 
@@ -72,30 +43,33 @@ async function createOrder({ cart, username }) {
       const itemId = Number(cartItem.id);
       const quantity = Number(cartItem.quantity);
 
-      const [[stockItem]] = await connection.query(
-        `
-          SELECT id, name, price, quantity
-          FROM inventory
-          WHERE id = ?
-          FOR UPDATE
-        `,
-        [itemId]
+      const stockItem = await inventory.findOneAndUpdate(
+        {
+          id: itemId,
+          quantity: { $gte: quantity }
+        },
+        { $inc: { quantity: -quantity } },
+        {
+          returnDocument: "before",
+          projection: { _id: 0, id: 1, name: 1, price: 1, quantity: 1 },
+          includeResultMetadata: false
+        }
       );
 
       if (!stockItem) {
-        await connection.rollback();
-        return { order: null, error: `Item ID ${itemId} not found.` };
+        const existingItem = await inventory.findOne(
+          { id: itemId },
+          { projection: { _id: 0, name: 1 } }
+        );
+        return {
+          order: null,
+          error: existingItem
+            ? `Not enough stock for ${existingItem.name}.`
+            : `Item ID ${itemId} not found.`
+        };
       }
 
-      if (stockItem.quantity < quantity) {
-        await connection.rollback();
-        return { order: null, error: `Not enough stock for ${stockItem.name}.` };
-      }
-
-      await connection.query(
-        "UPDATE inventory SET quantity = quantity - ? WHERE id = ?",
-        [quantity, itemId]
-      );
+      updatedItems.push({ id: itemId, quantity });
 
       totalAmount += Number(stockItem.price) * quantity;
       orderItems.push({
@@ -107,25 +81,14 @@ async function createOrder({ cart, username }) {
 
     const now = new Date();
     const orderId = generateOrderId(now);
-    const [orderResult] = await connection.query(
-      `
-        INSERT INTO orders (order_id, username, total_amount, created_at)
-        VALUES (?, ?, ?, ?)
-      `,
-      [orderId, username || "Guest", totalAmount, now]
-    );
+    await orders.insertOne({
+      orderId,
+      username: username || "Guest",
+      items: orderItems,
+      totalAmount,
+      createdAt: now
+    });
 
-    for (const item of orderItems) {
-      await connection.query(
-        `
-          INSERT INTO order_items (order_id, item_name, price, quantity)
-          VALUES (?, ?, ?, ?)
-        `,
-        [orderResult.insertId, item.name, item.price, item.quantity]
-      );
-    }
-
-    await connection.commit();
     return {
       error: null,
       order: {
@@ -137,10 +100,12 @@ async function createOrder({ cart, username }) {
       }
     };
   } catch (error) {
-    await connection.rollback();
+    await Promise.all(
+      updatedItems.map((item) =>
+        inventory.updateOne({ id: item.id }, { $inc: { quantity: item.quantity } })
+      )
+    );
     throw error;
-  } finally {
-    connection.release();
   }
 }
 
@@ -149,4 +114,3 @@ module.exports = {
   listOrders,
   listOrdersByUsername
 };
-

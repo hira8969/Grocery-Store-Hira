@@ -1,4 +1,4 @@
-const { getPool } = require("../config/database");
+const { getCollection } = require("../config/database");
 
 function mapInventoryItem(row) {
   return {
@@ -12,70 +12,70 @@ function mapInventoryItem(row) {
 }
 
 async function listInventory() {
-  const [rows] = await getPool().query(
-    `
-      SELECT id, name, price, quantity, category, image_url
-      FROM inventory
-      ORDER BY id ASC
-    `
-  );
+  const rows = await getCollection("inventory")
+    .find({}, { projection: { _id: 0 } })
+    .sort({ id: 1 })
+    .toArray();
   return rows.map(mapInventoryItem);
 }
 
-async function createInventoryItem({ name, price, quantity, category, image_url }) {
-  const [result] = await getPool().query(
-    `
-      INSERT INTO inventory (name, price, quantity, category, image_url)
-      VALUES (?, ?, ?, ?, ?)
-    `,
-    [name, Number(price), Number(quantity), category, image_url || null]
+async function getNextInventoryId() {
+  const result = await getCollection("counters").findOneAndUpdate(
+    { _id: "inventory" },
+    { $inc: { seq: 1 } },
+    { upsert: true, returnDocument: "after", includeResultMetadata: false }
   );
 
-  const [[item]] = await getPool().query(
-    `
-      SELECT id, name, price, quantity, category, image_url
-      FROM inventory
-      WHERE id = ?
-    `,
-    [result.insertId]
-  );
+  return result.seq;
+}
+
+async function createInventoryItem({ name, price, quantity, category, image_url }) {
+  const item = {
+    id: await getNextInventoryId(),
+    name,
+    price: Number(price),
+    quantity: Number(quantity),
+    category,
+    image_url: image_url || null
+  };
+
+  await getCollection("inventory").insertOne(item);
 
   return mapInventoryItem(item);
 }
 
 async function updateInventoryItem({ id, name, price, quantity, category, image_url }) {
-  const [result] = await getPool().query(
-    `
-      UPDATE inventory
-      SET name = ?,
-          price = ?,
-          quantity = ?,
-          category = ?,
-          image_url = COALESCE(?, image_url)
-      WHERE id = ?
-    `,
-    [name, Number(price), Number(quantity), category, image_url || null, Number(id)]
+  const update = {
+    name,
+    price: Number(price),
+    quantity: Number(quantity),
+    category
+  };
+
+  if (Object.prototype.hasOwnProperty.call(arguments[0], "image_url")) {
+    update.image_url = image_url || null;
+  }
+
+  const result = await getCollection("inventory").findOneAndUpdate(
+    { id: Number(id) },
+    { $set: update },
+    {
+      returnDocument: "after",
+      projection: { _id: 0 },
+      includeResultMetadata: false
+    }
   );
 
-  if (result.affectedRows === 0) {
+  if (!result) {
     return null;
   }
 
-  const [[item]] = await getPool().query(
-    `
-      SELECT id, name, price, quantity, category, image_url
-      FROM inventory
-      WHERE id = ?
-    `,
-    [Number(id)]
-  );
-
-  return mapInventoryItem(item);
+  return mapInventoryItem(result);
 }
 
 async function deleteInventoryItem(id) {
-  const [result] = await getPool().query("DELETE FROM inventory WHERE id = ?", [Number(id)]);
-  return result.affectedRows > 0;
+  const result = await getCollection("inventory").deleteOne({ id: Number(id) });
+  return result.deletedCount > 0;
 }
 
 module.exports = {
@@ -84,4 +84,3 @@ module.exports = {
   listInventory,
   updateInventoryItem
 };
-

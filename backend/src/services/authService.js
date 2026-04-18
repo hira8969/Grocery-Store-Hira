@@ -1,42 +1,32 @@
-const { getPool } = require("../config/database");
+const { getCollection } = require("../config/database");
 
 async function authenticateAdmin(username, password) {
-  const [[user]] = await getPool().query(
-    "SELECT username FROM admins WHERE username = ? AND password = ?",
-    [username, password]
+  return getCollection("admins").findOne(
+    { username, password },
+    { projection: { _id: 0, username: 1 } }
   );
-  return user || null;
 }
 
 async function signupCustomer({ username, password, name }) {
-  const [[existing]] = await getPool().query(
-    "SELECT username FROM customers WHERE username = ?",
-    [username]
+  const existing = await getCollection("customers").findOne(
+    { username },
+    { projection: { _id: 1 } }
   );
 
   if (existing) {
     return null;
   }
 
-  await getPool().query(
-    "INSERT INTO customers (username, password, name) VALUES (?, ?, ?)",
-    [username, password, name]
-  );
+  await getCollection("customers").insertOne({ username, password, name });
 
   return { username, password, name };
 }
 
 async function authenticateCustomer(username, password) {
-  const [[customer]] = await getPool().query(
-    `
-      SELECT username, password, name
-      FROM customers
-      WHERE username = ? AND password = ?
-    `,
-    [username, password]
+  return getCollection("customers").findOne(
+    { username, password },
+    { projection: { _id: 0, username: 1, password: 1, name: 1 } }
   );
-
-  return customer || null;
 }
 
 module.exports = {
@@ -44,4 +34,3 @@ module.exports = {
   authenticateCustomer,
   signupCustomer
 };
-

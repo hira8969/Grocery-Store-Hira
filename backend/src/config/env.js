@@ -8,11 +8,8 @@ module.exports = {
   backendRoot,
   port: Number(process.env.PORT || 5000),
   db: {
-    host: process.env.DB_HOST || "127.0.0.1",
-    port: Number(process.env.DB_PORT || 3306),
-    name: process.env.DB_NAME || "grocery_store_hira",
-    user: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || ""
+    uri: process.env.MONGODB_URI || "mongodb://127.0.0.1:27017",
+    name: process.env.MONGODB_DB_NAME || "grocery_store_hira"
   },
   paths: {
     frontendRoot: path.join(backendRoot, "..", "frontend"),
@@ -24,4 +21,3 @@ module.exports = {
     ordersDir: path.join(backendRoot, "data", "orders")
   }
 };
-

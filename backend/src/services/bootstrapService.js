@@ -1,184 +1,136 @@
 const fs = require("fs/promises");
 const path = require("path");
 const { db, paths } = require("../config/env");
-const { createAdminConnection, createPool, setPool, getPool } = require("../config/database");
+const { connectToDatabase, getCollection } = require("../config/database");
 const { readJsonFile } = require("../utils/file");
 const { parseOrderDate } = require("../utils/order");
 
-async function tableCount(connection, tableName) {
-  const [rows] = await connection.query(`SELECT COUNT(*) AS count FROM ${tableName}`);
-  return rows[0].count;
+async function collectionCount(name) {
+  return getCollection(name).countDocuments();
 }
 
-async function createSchema() {
-  const adminConnection = await createAdminConnection();
-  await adminConnection.query(`CREATE DATABASE IF NOT EXISTS \`${db.name}\``);
-  await adminConnection.end();
+async function createCollections() {
+  const database = await connectToDatabase();
+  const collections = await database.listCollections().toArray();
+  const existing = new Set(collections.map((collection) => collection.name));
 
-  setPool(createPool(db.name));
-  const connection = await getPool().getConnection();
-
-  try {
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS admins (
-        username VARCHAR(255) PRIMARY KEY,
-        password VARCHAR(255) NOT NULL
-      )
-    `);
-
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS customers (
-        username VARCHAR(255) PRIMARY KEY,
-        password VARCHAR(255) NOT NULL,
-        name VARCHAR(255) NOT NULL
-      )
-    `);
-
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS inventory (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        price DECIMAL(10, 2) NOT NULL,
-        quantity INT NOT NULL,
-        category VARCHAR(255) NOT NULL,
-        image_url VARCHAR(255) NULL
-      )
-    `);
-
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS orders (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        order_id VARCHAR(64) NOT NULL UNIQUE,
-        username VARCHAR(255) NOT NULL,
-        total_amount DECIMAL(10, 2) NOT NULL,
-        created_at DATETIME NOT NULL
-      )
-    `);
-
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS order_items (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        order_id INT NOT NULL,
-        item_name VARCHAR(255) NOT NULL,
-        price DECIMAL(10, 2) NOT NULL,
-        quantity INT NOT NULL,
-        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
-      )
-    `);
-  } finally {
-    connection.release();
+  for (const name of ["admins", "customers", "inventory", "orders", "counters"]) {
+    if (!existing.has(name)) {
+      await database.createCollection(name);
+    }
   }
+
+  await getCollection("admins").createIndex({ username: 1 }, { unique: true });
+  await getCollection("customers").createIndex({ username: 1 }, { unique: true });
+  await getCollection("inventory").createIndex({ id: 1 }, { unique: true });
+  await getCollection("orders").createIndex({ orderId: 1 }, { unique: true });
 }
 
 async function importJsonSeedData() {
-  const connection = await getPool().getConnection();
-
-  try {
-    if (await tableCount(connection, "admins") === 0) {
-      const admins = await readJsonFile(paths.usersFile, [{ username: "admin", password: "password123" }]);
-      for (const admin of admins) {
-        await connection.query(
-          `
-            INSERT INTO admins (username, password)
-            VALUES (?, ?)
-            ON DUPLICATE KEY UPDATE password = VALUES(password)
-          `,
-          [admin.username, admin.password]
-        );
-      }
+  if (await collectionCount("admins") === 0) {
+    const admins = await readJsonFile(paths.usersFile, [{ username: "admin", password: "password123" }]);
+    for (const admin of admins) {
+      await getCollection("admins").updateOne(
+        { username: admin.username },
+        { $set: { password: admin.password } },
+        { upsert: true }
+      );
     }
-
-    if (await tableCount(connection, "customers") === 0) {
-      const customers = await readJsonFile(paths.customersFile, []);
-      for (const customer of customers) {
-        await connection.query(
-          `
-            INSERT INTO customers (username, password, name)
-            VALUES (?, ?, ?)
-            ON DUPLICATE KEY UPDATE
-              password = VALUES(password),
-              name = VALUES(name)
-          `,
-          [customer.username, customer.password, customer.name]
-        );
-      }
-    }
-
-    if (await tableCount(connection, "inventory") === 0) {
-      const items = await readJsonFile(paths.inventoryFile, []);
-      for (const item of items) {
-        await connection.query(
-          `
-            INSERT INTO inventory (id, name, price, quantity, category, image_url)
-            VALUES (?, ?, ?, ?, ?, ?)
-            ON DUPLICATE KEY UPDATE
-              name = VALUES(name),
-              price = VALUES(price),
-              quantity = VALUES(quantity),
-              category = VALUES(category),
-              image_url = VALUES(image_url)
-          `,
-          [item.id, item.name, item.price, item.quantity, item.category, item.image_url || null]
-        );
-      }
-    }
-
-    if (await tableCount(connection, "orders") === 0) {
-      let filenames = [];
-      try {
-        filenames = await fs.readdir(paths.ordersDir);
-      } catch (error) {
-        filenames = [];
-      }
-
-      for (const filename of filenames.sort()) {
-        if (!filename.endsWith(".json")) {
-          continue;
-        }
-
-        const order = await readJsonFile(path.join(paths.ordersDir, filename), null);
-        if (!order) {
-          continue;
-        }
-
-        const orderId = order.orderId || filename.replace(/^order_/, "").replace(/\.json$/, "");
-        const username = order.username || "Guest";
-        const createdAt = parseOrderDate(order.date, filename);
-
-        await connection.query(
-          `
-            INSERT INTO orders (order_id, username, total_amount, created_at)
-            VALUES (?, ?, ?, ?)
-            ON DUPLICATE KEY UPDATE
-              username = VALUES(username),
-              total_amount = VALUES(total_amount),
-              created_at = VALUES(created_at)
-          `,
-          [orderId, username, Number(order.totalAmount || 0), createdAt]
-        );
-
-        const [[orderRow]] = await connection.query("SELECT id FROM orders WHERE order_id = ?", [orderId]);
-        await connection.query("DELETE FROM order_items WHERE order_id = ?", [orderRow.id]);
-
-        for (const item of order.items || []) {
-          await connection.query(
-            `
-              INSERT INTO order_items (order_id, item_name, price, quantity)
-              VALUES (?, ?, ?, ?)
-            `,
-            [orderRow.id, item.name, Number(item.price || 0), Number(item.quantity || 0)]
-          );
-        }
-      }
-    }
-  } finally {
-    connection.release();
   }
+
+  if (await collectionCount("customers") === 0) {
+    const customers = await readJsonFile(paths.customersFile, []);
+    for (const customer of customers) {
+      await getCollection("customers").updateOne(
+        { username: customer.username },
+        {
+          $set: {
+            password: customer.password,
+            name: customer.name
+          }
+        },
+        { upsert: true }
+      );
+    }
+  }
+
+  if (await collectionCount("inventory") === 0) {
+    const items = await readJsonFile(paths.inventoryFile, []);
+    for (const item of items) {
+      await getCollection("inventory").updateOne(
+        { id: Number(item.id) },
+        {
+          $set: {
+            name: item.name,
+            price: Number(item.price),
+            quantity: Number(item.quantity),
+            category: item.category,
+            image_url: item.image_url || null
+          }
+        },
+        { upsert: true }
+      );
+    }
+  }
+
+  if (await collectionCount("orders") === 0) {
+    let filenames = [];
+    try {
+      filenames = await fs.readdir(paths.ordersDir);
+    } catch (error) {
+      filenames = [];
+    }
+
+    for (const filename of filenames.sort()) {
+      if (!filename.endsWith(".json")) {
+        continue;
+      }
+
+      const order = await readJsonFile(path.join(paths.ordersDir, filename), null);
+      if (!order) {
+        continue;
+      }
+
+      const orderId = order.orderId || filename.replace(/^order_/, "").replace(/\.json$/, "");
+      const username = order.username || "Guest";
+      const createdAt = parseOrderDate(order.date, filename);
+
+      await getCollection("orders").updateOne(
+        { orderId },
+        {
+          $set: {
+            username,
+            totalAmount: Number(order.totalAmount || 0),
+            createdAt,
+            items: (order.items || []).map((item) => ({
+              name: item.name,
+              price: Number(item.price || 0),
+              quantity: Number(item.quantity || 0)
+            }))
+          }
+        },
+        { upsert: true }
+      );
+    }
+  }
+
+  const highestInventoryId = await getCollection("inventory")
+    .find({}, { projection: { id: 1 } })
+    .sort({ id: -1 })
+    .limit(1)
+    .toArray();
+
+  await getCollection("counters").updateOne(
+    { _id: "inventory" },
+    { $max: { seq: highestInventoryId[0]?.id || 0 } },
+    { upsert: true }
+  );
 }
 
 async function initializeDatabase() {
-  await createSchema();
+  await createCollections();
   await importJsonSeedData();
+  console.log(`MongoDB connected: ${db.name}`);
 }
 
 module.exports = {
