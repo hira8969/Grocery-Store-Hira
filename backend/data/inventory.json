@@ -19,7 +19,7 @@
         "id": 3,
         "name": "Banana (1 Dozen)",
         "price": 70.0,
-        "quantity": 186,
+        "quantity": 185,
         "category": "Fruits",
         "image_url": "/static/images/banana.jpeg"
     },
@@ -59,7 +59,7 @@
         "id": 8,
         "name": "Floor Cleaner (1L)",
         "price": 99.0,
-        "quantity": 69,
+        "quantity": 68,
         "category": "Household",
         "image_url": "/static/images/cleaner.png"
     },
@@ -611,7 +611,7 @@
         "id": 78,
         "name": "Harpic Bathroom Cleaner",
         "price": 120.0,
-        "quantity": 58,
+        "quantity": 57,
         "category": "Household",
         "image_url": "/static/images/cleaner.png"
     },
@@ -1024,4 +1024,3 @@
         "image_url": "/static/images/tissues.webp"
     }
 ]
-
