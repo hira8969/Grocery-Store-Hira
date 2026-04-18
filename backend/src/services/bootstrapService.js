@@ -133,6 +133,23 @@ async function initializeDatabase() {
   console.log(`MongoDB connected: ${db.name}`);
 }
 
+function initializeDatabaseWithRetry(retryDelayMs = 5000) {
+  const attemptInitialization = async () => {
+    try {
+      await initializeDatabase();
+    } catch (error) {
+      console.error(
+        `MongoDB initialization failed. Retrying in ${retryDelayMs / 1000}s:`,
+        error.message
+      );
+      setTimeout(attemptInitialization, retryDelayMs);
+    }
+  };
+
+  void attemptInitialization();
+}
+
 module.exports = {
-  initializeDatabase
+  initializeDatabase,
+  initializeDatabaseWithRetry
 };

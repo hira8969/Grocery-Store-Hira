@@ -8,7 +8,7 @@ module.exports = {
   backendRoot,
   port: Number(process.env.PORT || 5000),
   db: {
-    uri: process.env.MONGODB_URI || "mongodb://127.0.0.1:27017",
+    uri: process.env.MONGO_URI || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017",
     name: process.env.MONGODB_DB_NAME || "grocery_store_hira"
   },
   paths: {
