@@ -1,58 +1,64 @@
-## 📌 Project Overview
+## Project Overview
 
-The Grocery Store Management System is a desktop application designed to streamline the day-to-day operations of a retail grocery store. It allows administrators to manage inventory, process customer bills, track sales, and maintain product records efficiently. This project aims to replace manual bookkeeping with a digital, automated solution.
+The Grocery Store Management System helps manage inventory, customer orders, billing, and store operations through a browser-based UI.
 
----
+## Stack
 
-## ✨ Key Features
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express
+- Database: MySQL
 
-* **Admin Dashboard:** Secure login and control panel for store administrators.
-* **Inventory Management:** effortless adding, updating, and deleting of products (Price, Category, Quantity).
-* **Billing System:** Automated calculation of total costs with a generated receipt/invoice.
-* **Category Filtering:** Sort products by specific categories (e.g., Meat, Vegetables, Dairy).
-* **Sales Records:** Keep track of transaction history and daily sales.
+## Structure
 
----
-
-## 🏗️ Architecture
-
-This project follows the **MVC (Model-View-Controller)** pattern for better code organization and maintainability.
-
-### Structure
-```
-├── backend/               # Backend application
-│   ├── app.py             # Main Flask application
-│   ├── models/            # Data models and business logic
-│   │   ├── __init__.py
-│   │   ├── data_manager.py
-│   │   ├── user_model.py
-│   │   ├── customer_model.py
-│   │   ├── inventory_model.py
-│   │   └── order_model.py
-│   ├── controllers/       # Route handlers and controllers
-│   │   ├── __init__.py
-│   │   ├── auth_controller.py
-│   │   ├── inventory_controller.py
-│   │   ├── order_controller.py
-│   │   └── view_controller.py
-│   ├── data/              # JSON data storage
-│   ├── bills/             # Generated bills
-│   └── generate_data.py   # Data generation script
-├── frontend/              # Frontend assets
-│   ├── templates/         # Jinja2 HTML templates
-│   │   ├── index.html
-│   │   ├── admin.html
-│   │   ├── login.html
-│   │   ├── orders.html
-│   │   └── invoice.html
-│   └── static/            # Static assets (CSS, JS, images)
-│       ├── css/
-│       ├── js/
-│       └── images/
-└── README.md              # Project documentation
+```text
+backend/
+  server.js
+  package.json
+  .env.example
+  data/
+frontend/
+  index.html
+  admin.html
+  login.html
+  orders.html
+  invoice.html
+  static/
+Procfile
+README.md
 ```
 
-### MVC Components
-- **Models:** Handle data operations, validation, and business logic
-- **Views:** HTML templates rendered by Flask
-- **Controllers:** Flask blueprints handling HTTP requests and responses
+## Environment
+
+Create `backend/.env` using this shape:
+
+```env
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_NAME=grocery_store_hira
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+PORT=5000
+```
+
+## Local Run
+
+```bash
+cd backend
+npm install
+npm start
+```
+
+The server will:
+- create the MySQL database if needed
+- create required tables
+- import JSON data from `backend/data/` when the tables are empty
+
+## Deployment
+
+The app is configured to run with:
+
+```bash
+npm start --prefix backend
+```
+
+The `Procfile` already points to the Node backend.
